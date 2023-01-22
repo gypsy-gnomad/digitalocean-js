@@ -42,6 +42,7 @@ jobs:
 
       - name: Build
         run: yarn nx build digitalocean-js
+
   publish:
     name: 'Publish to GitHub Packages'
     needs: [build]
@@ -52,6 +53,6 @@ jobs:
           node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
           registry-url: https://npm.pkg.github.com/
       - run: echo "registry=https://npm.pkg.github.com/@gyspy-gnomad" >> .npmrc
-      - run: yarn nx publish
+        run: yarn nx publish digitalocean-js 
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
