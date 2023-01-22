@@ -43,11 +43,6 @@ jobs:
       - name: Build
         run: yarn nx build digitalocean-js
 
-  publish:
-    name: 'Publish to GitHub Packages'
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
       - name: configure registry
         uses: actions/setup-node@v3
         with:
