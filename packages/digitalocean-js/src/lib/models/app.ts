@@ -6,6 +6,18 @@ export interface AppSpecDomain {
   minimum_tls_version: string; // "1.2" or "1.3"
 }
 
+export interface AppEnvSpec {
+  key: string;
+  scope: ['UNSET', 'RUN_TIME', 'BUILD_TIME', 'RUN_AND_BUILD_TIME'];
+  type: ['GENERAL', 'SECRET'];
+  value: string;
+}
+
+export interface AppRouteSpec {
+  path: string;
+  preserve_path_prefix: boolean;
+}
+
 export interface AppSpecDeployable {
   github?: {
     branch: string;
@@ -14,17 +26,10 @@ export interface AppSpecDeployable {
   };
   run_command?: string;
   source_dir?: string;
-  envs?: {
-    key: string;
-    scope: ['UNSET', 'RUN_TIME', 'BUILD_TIME', 'RUN_AND_BUILD_TIME'];
-    type: ['GENERAL', 'SECRET'];
-    value: string;
-  };
+  envs?: AppEnvSpec[];
+
   environment_slug?: string;
-  routes?: {
-    path: string;
-    preserve_path_prefix: boolean;
-  };
+  routes?: AppRouteSpec[];
   instance_size_slug: [
     'basic-xxs',
     'basic-xs',
@@ -38,8 +43,8 @@ export interface AppSpecDeployable {
     'professional-xl'
   ];
   instance_count: number;
-  cors?: [];
-  health_check?: {};
+  cors?: any[];
+  health_check?: any;
   http_port: number;
   internal_ports: number[];
 }
