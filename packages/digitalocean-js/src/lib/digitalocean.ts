@@ -61,6 +61,7 @@ export class DigitalOcean {
 
     this.account = new AccountService();
     this.actions = new ActionService();
+    this.apps = new AppService();
     this.billingHistory = new BillingHistoryService();
     this.blockStorage = new BlockStorageService();
     this.blockStorageActions = new BlockStorageActionService();
