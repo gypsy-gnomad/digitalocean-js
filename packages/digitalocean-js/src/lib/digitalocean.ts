@@ -1,5 +1,6 @@
 import { instance } from './axios-instance';
 import { API_BASE_URL } from './conf/environment';
+import { AppService } from './services';
 import { AccountService } from './services/account/account.service';
 import { ActionService } from './services/actions/actions.service';
 import { BillingHistoryService } from './services/billing-history/billing-history.service';
@@ -28,6 +29,8 @@ import { TagService } from './services/tag/tag.service';
 export class DigitalOcean {
   public account: AccountService;
   public actions: ActionService;
+
+  public apps: AppService
   public billingHistory: BillingHistoryService;
   public blockStorage: BlockStorageService;
   public blockStorageActions: BlockStorageActionService;

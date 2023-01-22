@@ -1,5 +1,6 @@
 export * from './account';
 export * from './action';
+export * from './app';
 export * from './backup';
 export * from './balance';
 export * from './billing-history';
@@ -21,5 +22,6 @@ export * from './project';
 export * from './region';
 export * from './size';
 export * from './snapshot';
+export * from './space';
 export * from './ssh-key';
 export * from './tag';

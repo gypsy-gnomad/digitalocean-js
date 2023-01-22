@@ -1,5 +1,6 @@
 export type { AccountService } from './account/account.service';
 export type { ActionService } from './actions/actions.service';
+export type { AppService } from './app/app.service';
 export type { BillingHistoryService } from './billing-history/billing-history.service';
 export type { BlockStorageActionService } from './block-storage/block-storage-actions.service';
 export type { BlockStorageService } from './block-storage/block-storage.service';
@@ -23,5 +24,6 @@ export type {
   SnapshotService,
   SnapshotType
 } from './snapshot/snapshot.service';
+export type { SpaceService } from './space/space.service';
 export type { SshService } from './ssh/ssh.service';
 export type { TagService } from './tag/tag.service';
