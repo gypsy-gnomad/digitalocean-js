@@ -48,11 +48,14 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-node@v3
+      - name: configure registry
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
           registry-url: https://npm.pkg.github.com/
-      - run: echo "registry=https://npm.pkg.github.com/@gyspy-gnomad" >> .npmrc
-        run: yarn nx publish digitalocean-js 
+      - name: configure .npmrc
+        run: echo "registry=https://npm.pkg.github.com/@gyspy-gnomad" >> .npmrc
+      - name: publish
+        run: yarn nx publish digitalocean-js
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
