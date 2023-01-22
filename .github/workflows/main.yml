@@ -45,13 +45,13 @@ jobs:
   publish:
     name: 'Publish to GitHub Packages'
     needs: [build]
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
           registry-url: https://npm.pkg.github.com/
       - run: echo "registry=https://npm.pkg.github.com/@gyspy-gnomad" >> .npmrc
-      - run: yarn nx publish digitalocean-js
+      - run: yarn nx publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
