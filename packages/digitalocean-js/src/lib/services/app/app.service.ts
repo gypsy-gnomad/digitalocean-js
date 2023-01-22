@@ -34,7 +34,7 @@ export class AppService {
    * ```
    */
   public createNewApp(App: App): Promise<App> {
-    return instance.post(`/Apps`, App).then(response => response.data.App);
+    return instance.post(`/apps`, App).then(response => response.data.App);
   }
 
   /**
@@ -67,7 +67,7 @@ export class AppService {
    */
   public createMultipleApps(AppsRequest: App): Promise<App[]> {
     return instance
-      .post(`/Apps`, AppsRequest)
+      .post(`/apps`, AppsRequest)
       .then(response => response.data.Apps);
   }
 
@@ -98,7 +98,7 @@ export class AppService {
    * ```
    */
   public getAllApps(): Promise<App[]> {
-    return instance.get(`/Apps`).then(response => response.data.Apps);
+    return instance.get(`/apps`).then(response => response.data.Apps);
   }
 
   /**
@@ -114,76 +114,8 @@ export class AppService {
    */
   public getAppsByTag(tag: string): Promise<App[]> {
     return instance
-      .get(`/Apps`, { params: { tag_name: tag } })
+      .get(`/apps`, { params: { tag_name: tag } })
       .then(response => response.data.Apps);
-  }
-
-  /**
-   * Retrieve a list of all kernels available to a App
-   *
-   * ### Example
-   * ```js
-   * import { DigitalOcean } from 'digitalocean-js';
-   *
-   * const client = new DigitalOcean('your-api-key');
-   * const kernels = await client.Apps.getAvailableKernelsForApp('App-id');
-   * ```
-   */
-  public getAvailableKernelsForApp(AppId: number): Promise<Kernel[]> {
-    return instance
-      .get(`/Apps/${AppId}/kernels`)
-      .then(response => response.data.kernels);
-  }
-
-  /**
-   * Retrieve the snapshots that have been created from a App
-   *
-   * ### Example
-   * ```js
-   * import { DigitalOcean } from 'digitalocean-js';
-   *
-   * const client = new DigitalOcean('your-api-key');
-   * const snapshots = await client.Apps.getSnapshotsForApp('App-id');
-   * ```
-   */
-  public getSnapshotsForApp(AppId: number): Promise<Snapshot[]> {
-    return instance
-      .get(`/Apps/${AppId}/snapshots`)
-      .then(response => response.data.snapshots);
-  }
-
-  /**
-   * Retrieve any backups associated with a App
-   *
-   * ### Example
-   * ```js
-   * import { DigitalOcean } from 'digitalocean-js';
-   *
-   * const client = new DigitalOcean('your-api-key');
-   * const backups = await client.Apps.getBackupsForApp('App-id');
-   * ```
-   */
-  public getBackupsForApp(AppId: number): Promise<Backup[]> {
-    return instance
-      .get(`/Apps/${AppId}/backups`)
-      .then(response => response.data.backups);
-  }
-
-  /**
-   * Retrieve all actions that have been executed on a App
-   *
-   * ### Example
-   * ```js
-   * import { DigitalOcean } from 'digitalocean-js';
-   *
-   * const client = new DigitalOcean('your-api-key');
-   * const actions = await client.Apps.getAppActions('App-id');
-   * ```
-   */
-  public getAppActions(AppId: number): Promise<Action[]> {
-    return instance
-      .get(`/Apps/${AppId}/actions`)
-      .then(response => response.data.actions);
   }
 
   /**
@@ -198,7 +130,7 @@ export class AppService {
    * ```
    */
   public deleteApp(AppId: number): Promise<void> {
-    return instance.delete(`/Apps/${AppId}`);
+    return instance.delete(`/apps/${AppId}`);
   }
 
   /**
@@ -213,40 +145,6 @@ export class AppService {
    * ```
    */
   public deleteAppsByTag(tag: string): Promise<void> {
-    return instance.delete(`/Apps`, { params: { tag_name: tag } });
-  }
-
-  /**
-   * Retrieve a list of Apps that are running on the same physical server
-   *
-   * ### Example
-   * ```js
-   * import { DigitalOcean } from 'digitalocean-js';
-   *
-   * const client = new DigitalOcean('your-api-key');
-   * const Apps = await client.Apps.getNeighborsForApp('App-id');
-   * ```
-   */
-  public getNeighborsForApp(AppId: number): Promise<App[]> {
-    return instance
-      .delete(`/Apps/${AppId}/neighbors`)
-      .then(response => response.data.Apps);
-  }
-
-  /**
-   * Retrieve a list of any Apps that are running on the same physical hardware
-   *
-   * ### Example
-   * ```js
-   * import { DigitalOcean } from 'digitalocean-js';
-   *
-   * const client = new DigitalOcean('your-api-key');
-   * const Apps = await client.Apps.getAppNeighbors();
-   * ```
-   */
-  public getAppNeighbors(): Promise<App[][]> {
-    return instance
-      .delete(`/reports/App_neighbors`)
-      .then(response => response.data.neighbors);
+    return instance.delete(`/apps`, { params: { tag_name: tag } });
   }
 }
