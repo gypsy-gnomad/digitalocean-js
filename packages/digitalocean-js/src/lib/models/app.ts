@@ -7,7 +7,6 @@ export interface AppSpecDomain {
 }
 
 export interface AppSpecDeployable {
-  name: string;
   github?: {
     branch: string;
     deploy_on_push: boolean;
@@ -50,7 +49,9 @@ export interface AppSpecBuildable extends AppSpecDeployable {
   build_command?: string;
 }
 
-export interface AppSpecService extends AppSpecBuildable {}
+export interface AppSpecService extends AppSpecBuildable {
+  name: string;
+}
 
 export interface AppSpecWorker extends AppSpecBuildable {
   kind: ['UNSPECIFIED', 'PRE_DEPLOY', 'POST_DEPLOY', 'FAILED_DEPLOY'];
